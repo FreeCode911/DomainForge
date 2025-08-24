@@ -7,6 +7,7 @@ import json
 import os
 from utils.data_manager import load_data, save_data
 from utils.embed_helpers import build_embed
+from utils.admin_notify import send_admin_embed
 
 
 class SubdomainCreationView(View):
@@ -115,6 +116,11 @@ class SubdomainCreationView(View):
                 embed = build_embed(title="Subdomain Created", description=f"Subdomain created successfully!\n{message}", color=discord.Color.green(), user=interaction.user, fields=[("Domain", subdomain, False), ("Record Type", self.record_type, True), ("Content", self.record_content.split(',')[1], True), ("Proxy", "Proxied" if self.proxy_status else "DNS only", True)])
                 await interaction.response.edit_message(embed=embed, view=None)
 
+                # Notify admins
+                admin_embed = build_embed(title="New Subdomain Created", description=f"User <@{interaction.user.id}> created a new subdomain.", color=discord.Color.blue(), fields=[("Domain", subdomain, False), ("Record Type", self.record_type, True), ("Content", self.record_content.split(',')[1], True), ("Proxy", "Proxied" if self.proxy_status else "DNS only", True)])
+                # schedule background send to avoid blocking
+                asyncio.create_task(send_admin_embed(interaction.client, admin_embed))
+
                 dm_fields = [
                     ("Domain", subdomain, False),
                     ("Record Type", self.record_type, True),
@@ -129,6 +135,9 @@ class SubdomainCreationView(View):
             else:
                 embed = build_embed(title="Creation Failed", description=f"Failed to create DNS record. Cloudflare returned the following error:\n```{message}```", color=discord.Color.red(), user=interaction.user)
                 await interaction.response.edit_message(embed=embed, view=None)
+
+                admin_embed = build_embed(title="Subdomain Creation Failed", description=f"User <@{interaction.user.id}> attempted to create a subdomain but Cloudflare returned an error.", color=discord.Color.red(), fields=[("Domain", self.domain, False), ("Record Type", self.record_type, True), ("Error", str(message), False)])
+                asyncio.create_task(send_admin_embed(interaction.client, admin_embed))
         except Exception as e:
             embed = build_embed(title="Error", description=f"An unexpected error occurred: {str(e)}", color=discord.Color.red(), user=interaction.user)
             await interaction.response.edit_message(embed=embed, view=None)

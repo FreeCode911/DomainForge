@@ -4,6 +4,8 @@ from discord.ui import View, Modal, TextInput
 from utils.data_manager import is_admin, load_data, save_data
 from utils.embed_helpers import build_embed
 import cloudflare
+from utils.admin_notify import send_admin_embed
+import asyncio
 
 
 class RenameModal(Modal, title="Rename Subdomain"):
@@ -68,7 +70,11 @@ class RenameModal(Modal, title="Rename Subdomain"):
                             data['users'][uid][idx] = new_full
                             save_data(data)
 
-                        await interaction.followup.send(f"Renamed {self.domain} -> {new_full}")
+                            await interaction.followup.send(f"Renamed {self.domain} -> {new_full}")
+
+                            admin_embed = build_embed(title="Subdomain Renamed", description=f"User <@{interaction.user.id}> renamed a subdomain.", fields=[("Old", self.domain, False), ("New", new_full, False)])
+                            # background notify
+                            asyncio.create_task(send_admin_embed(interaction.client, admin_embed))
         except Exception as e:
             await interaction.followup.send(f"An error occurred during rename: {e}", ephemeral=True)
 
@@ -87,8 +93,20 @@ class ManageSubdomainView(View):
     async def toggle_proxy(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
         success, message = await cloudflare.toggle_proxy_status(self.domain)
-        embed = build_embed(title="Toggle Proxy", description=message, color=discord.Color.green() if success else discord.Color.red(), user=interaction.user)
+        embed = build_embed(
+            title="Toggle Proxy",
+            description=message,
+            color=discord.Color.green() if success else discord.Color.red(),
+            user=interaction.user,
+        )
         await interaction.followup.send(embed=embed)
+        # notify admins in background
+        admin_embed = build_embed(
+            title="Proxy Toggled",
+            description=f"User <@{interaction.user.id}> toggled proxy for {self.domain}.",
+            fields=[("Result", message, False)],
+        )
+        asyncio.create_task(send_admin_embed(interaction.client, admin_embed))
 
     @discord.ui.button(label="Delete Subdomain", style=discord.ButtonStyle.danger)
     async def delete_subdomain(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -103,6 +121,9 @@ class ManageSubdomainView(View):
 
             embed = build_embed(title="Subdomain Deleted", description=f"Successfully deleted {self.domain}", color=discord.Color.green(), user=interaction.user)
             await interaction.followup.send(embed=embed)
+            # notify admins
+            admin_embed = build_embed(title="Subdomain Deleted", description=f"User <@{interaction.user.id}> deleted {self.domain}.", color=discord.Color.orange(), fields=[("Domain", self.domain, False)])
+            asyncio.create_task(send_admin_embed(interaction.client, admin_embed))
         else:
             embed = build_embed(title="Delete Failed", description=f"Failed to delete subdomain {self.domain}", color=discord.Color.red(), user=interaction.user)
             await interaction.followup.send(embed=embed, ephemeral=True)
