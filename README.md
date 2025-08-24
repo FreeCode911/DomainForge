@@ -1,4 +1,4 @@
-# DomainForge v1.1
+# DomainForge v1.2
 
 <!-- Add project badges here -->
 <!-- Example: [![Build Status](https://travis-ci.org/your-username/domainforge.svg?branch=main)](https://travis-ci.org/your-username/domainforge) -->
@@ -33,6 +33,17 @@ DomainForge is a powerful and user-friendly Discord bot designed to streamline C
 - **Role-Based Permissions**: Control who can create subdomains using Discord roles for enhanced security.
 - **Centralized Management**: Manage subdomains and admin settings from a single, interactive command.
 - **Cloudflare Integration**: Seamless connection with Cloudflare for reliable DNS management.
+
+### v1.2 — Release notes
+
+- Improved, consistent embed styling across all user and admin interactions.
+- Added Subdomain Rename: admins and owners can rename a subdomain (implemented as create+delete with audit comment).
+- Admin Dashboard: `/admin_manage` now shows feature flags and quick toggle buttons.
+- Feature Flags: admin-controlled features such as `request_subdomain_role` are stored in `data.json` and editable via the dashboard.
+- Hidden Items: admins can mark certain embeds/items as hidden; these keys are stored in `data.json` and controllable via the dashboard.
+- Data persistence hardened: in-memory changes are flushed on shutdown and a periodic saver ensures `data.json` stays up-to-date (prevents loss of user subdomain lists when the bot stops).
+
+See the "Admin Dashboard" section below for how to toggle features and hidden items.
 
 ## Getting Started
 
@@ -95,6 +106,23 @@ DomainForge is a powerful and user-friendly Discord bot designed to streamline C
 
     ```bash
     python bot.py
+
+## Using config.py
+
+`config.py` loads environment variables from `.env` and exposes them as module-level constants.
+
+Example usage in other modules:
+
+```python
+from config import DISCORD_BOT_TOKEN, CLOUDFLARE_API_TOKEN, SUBDOMAIN_CREATION_ROLES
+
+print(DISCORD_BOT_TOKEN)  # use with your Discord client setup
+if SUBDOMAIN_CREATION_ROLES:
+  print('Subdomain creation is restricted to roles:', SUBDOMAIN_CREATION_ROLES)
+```
+
+All common configuration names are defined in `config.py` and are safe to import
+from anywhere in the project. Keep your `.env` secret and never commit it.
     ```
 
 ## Contributing

@@ -1,3 +1,29 @@
+"""config.py
+
+Small configuration helper for DomainForge.
+
+This module loads environment variables from a `.env` file (via python-dotenv)
+and exposes commonly used settings as module-level constants so other modules
+can simply `from config import DISCORD_BOT_TOKEN`.
+
+How to use
+- Create a `.env` file in the project root (see README.md for a sample).
+- Import values in your code, for example:
+
+    from config import DISCORD_BOT_TOKEN, SUBDOMAIN_CREATION_ROLES
+
+Notes on variables
+- `DISCORD_BOT_TOKEN` - your bot token from the Discord Developer Portal.
+- `CLOUDFLARE_API_TOKEN` - a Cloudflare API token with DNS edit permissions.
+- `SUBDOMAIN_CREATION_ROLES` - a list of role IDs (ints) allowed to create subdomains.
+- `ADMIN_USER_IDS` / `ADMIN_ROLE_IDS` - admin user and role IDs used by admin checks.
+- `ADMIN_CHANNEL_ID` - channel ID used for admin notifications (int). Defaults to 0.
+- `COMMAND_PREFIX` - legacy prefix fallback (default: "!").
+
+The module will coerce comma-separated ID lists into integer lists and will
+apply sensible defaults for optional values. Keep secrets out of source control.
+"""
+
 import os
 from dotenv import load_dotenv
 
