@@ -15,24 +15,45 @@ load_dotenv()
 # Bot setup
 import config
 intents = discord.Intents.default()
-print("\n---------------------------------------------------\n   DomainForge Bot is loading, please wait...\n---------------------------------------------------\n")
+banner = """
+---------------------------------------------------
+    DomainForge Bot is loading, please wait...
+---------------------------------------------------
+"""
+print(banner)
 bot = commands.Bot(command_prefix=config.COMMAND_PREFIX, intents=intents)
 from utils.data_manager import start_data_saver
 
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user} (ID: {bot.user.id})')
+    # Start data saver
+    print('Starting data saver...')
     start_data_saver()
-    bot.tree.add_command(create_subdomain.create_subdomain)
-    bot.tree.add_command(list_subdomains.list_subdomains)
-    bot.tree.add_command(userinfo.userinfo)
-    bot.tree.add_command(ban.ban_user)
-    bot.tree.add_command(whois.whois)
-    bot.tree.add_command(unban.unban_user)
-    bot.tree.add_command(request_subdomain_role.request_subdomain_role)
-    bot.tree.add_command(manage_subdomain.manage_subdomain)
-    bot.tree.add_command(admin_manage.admin_manage)
+
+    # Register commands and show loading progress
+    commands_to_register = [
+        (create_subdomain.create_subdomain, 'create_subdomain'),
+        (list_subdomains.list_subdomains, 'list_subdomains'),
+        (userinfo.userinfo, 'userinfo'),
+        (ban.ban_user, 'ban_user'),
+        (whois.whois, 'whois'),
+        (unban.unban_user, 'unban_user'),
+        (request_subdomain_role.request_subdomain_role, 'request_subdomain_role'),
+        (manage_subdomain.manage_subdomain, 'manage_subdomain'),
+        (admin_manage.admin_manage, 'admin_manage'),
+    ]
+
+    for cmd, name in commands_to_register:
+        try:
+            bot.tree.add_command(cmd)
+            print(f'Loaded command: {name}')
+        except Exception as e:
+            print(f'Failed to load command {name}: {e}')
+
+    # Sync application commands with Discord
     try:
+        print('Syncing application commands with Discord...')
         synced = await bot.tree.sync()
         print(f"Synced {len(synced)} command(s)")
     except Exception as e:
