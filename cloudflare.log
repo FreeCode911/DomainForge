@@ -12,3 +12,15 @@
 2024-09-12 08:11:58,717:ERROR:cloudflare: Failed to create DNS record: [{'code': 9208, 'message': 'Failed to parse. priority must be a number.'}]
 2024-09-12 08:12:47,239:ERROR:cloudflare: Failed to create DNS record: [{'code': 9208, 'message': 'Failed to parse. priority must be a number.'}]
 2024-09-12 08:13:37,416:ERROR:cloudflare: Failed to create DNS record: [{'code': 9208, 'message': 'Failed to parse. priority must be a number.'}]
+2025-08-24 06:09:45,747:ERROR:cloudflare: Failed to create DNS record: [{'code': 9005, 'message': 'Content for A record must be a valid IPv4 address.'}]
+2025-08-24 06:10:25,771:INFO:cloudflare: Successfully created DNS record for aman.lykcloud.com
+2025-08-24 06:25:45,822:INFO:cloudflare: Successfully created DNS record for mam.lykcloud.com
+2025-08-24 06:28:13,579:INFO:cloudflare: Successfully created DNS record for gg.lykcloud.com
+2025-08-24 06:32:10,975:INFO:cloudflare: Successfully created DNS record for gggg.lykcloud.com
+2025-08-24 06:44:28,647:INFO:cloudflare: Successfully created DNS record for test.lykcloud.com
+2025-08-24 06:44:48,771:INFO:cloudflare: Successfully deleted DNS record for test.lykcloud.com
+2025-08-24 06:44:51,063:ERROR:cloudflare: No DNS record found for domain test.lykcloud.com
+2025-08-24 06:50:38,315:ERROR:cloudflare: Failed to create DNS record: [{'code': 9003, 'message': 'Target 192.168.4.1 is not allowed for a proxied record.'}]
+2025-08-24 06:51:06,972:INFO:cloudflare: Successfully created DNS record for testtt.lykcloud.com
+2025-08-24 06:51:27,388:ERROR:cloudflare: Failed to toggle proxy status for testtt.lykcloud.com: [{'code': 9004, 'message': 'This record type cannot be proxied.'}]
+2025-08-24 06:52:01,940:INFO:cloudflare: Successfully deleted DNS record for testtt.lykcloud.com

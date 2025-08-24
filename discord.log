@@ -4,3 +4,714 @@
 2024-09-11 17:30:26,032:INFO:discord.gateway: Shard ID None has connected to Gateway (Session ID: a873847c17c818ad5e5c3dff62e56ee2).
 2024-09-11 17:30:28,036:INFO:discord: Logged in as Code Try#3471 (ID: 1191760233362636850)
 2024-09-11 17:30:28,480:INFO:discord: Synced 1 command(s)
+2025-08-24 06:03:38,191 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:03:38,192 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:03:38,192 - INFO - logging in using static token
+2025-08-24 06:03:39,931 - INFO - Shard ID None has connected to Gateway (Session ID: ce09c8e4cb8764febf528c87a5395323).
+2025-08-24 06:03:41,934 - INFO - Starting data saver thread...
+2025-08-24 06:03:41,935 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/workspaces/DomainForge/bot.py", line 27, in on_ready
+    bot.tree.add_command(list_subdomains.list_subdomains)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 381, in add_command
+    raise TypeError(f'Expected an application command, received {command.__class__.__name__} instead')
+TypeError: Expected an application command, received function instead
+2025-08-24 06:04:22,987 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:04:22,988 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:04:22,988 - INFO - logging in using static token
+2025-08-24 06:04:24,701 - INFO - Shard ID None has connected to Gateway (Session ID: 7fcfc0a035362b39e25f4efec8fd0c1b).
+2025-08-24 06:04:26,715 - INFO - Starting data saver thread...
+2025-08-24 06:04:26,715 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/workspaces/DomainForge/bot.py", line 28, in on_ready
+    bot.tree.add_command(userinfo.userinfo)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 381, in add_command
+    raise TypeError(f'Expected an application command, received {command.__class__.__name__} instead')
+TypeError: Expected an application command, received function instead
+2025-08-24 06:04:33,640 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:04:33,641 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:04:33,641 - INFO - logging in using static token
+2025-08-24 06:04:35,305 - INFO - Shard ID None has connected to Gateway (Session ID: 1a04764ecd75657a6c94ecd06346fcf4).
+2025-08-24 06:04:37,312 - INFO - Starting data saver thread...
+2025-08-24 06:04:37,312 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/workspaces/DomainForge/bot.py", line 28, in on_ready
+    bot.tree.add_command(userinfo.userinfo)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 381, in add_command
+    raise TypeError(f'Expected an application command, received {command.__class__.__name__} instead')
+TypeError: Expected an application command, received function instead
+2025-08-24 06:05:03,576 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:05:03,577 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:05:03,577 - INFO - logging in using static token
+2025-08-24 06:05:05,145 - INFO - Shard ID None has connected to Gateway (Session ID: ebd40fb1186f951022daf03c6f6f6e33).
+2025-08-24 06:05:07,163 - INFO - Starting data saver thread...
+2025-08-24 06:05:07,163 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/workspaces/DomainForge/bot.py", line 29, in on_ready
+    bot.tree.add_command(ban.ban_user)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 381, in add_command
+    raise TypeError(f'Expected an application command, received {command.__class__.__name__} instead')
+TypeError: Expected an application command, received function instead
+2025-08-24 06:05:51,165 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:05:51,166 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:05:51,166 - INFO - logging in using static token
+2025-08-24 06:05:52,809 - INFO - Shard ID None has connected to Gateway (Session ID: bb4c757452a165cc6bdb02cef0d3ade2).
+2025-08-24 06:05:54,816 - INFO - Starting data saver thread...
+2025-08-24 06:05:54,817 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/workspaces/DomainForge/bot.py", line 30, in on_ready
+    bot.tree.add_command(whois.whois)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 381, in add_command
+    raise TypeError(f'Expected an application command, received {command.__class__.__name__} instead')
+TypeError: Expected an application command, received function instead
+2025-08-24 06:06:23,467 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:06:23,468 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:06:23,468 - INFO - logging in using static token
+2025-08-24 06:06:25,075 - INFO - Shard ID None has connected to Gateway (Session ID: 1d0dcfc822443e19d297ad346017e11c).
+2025-08-24 06:06:27,087 - INFO - Starting data saver thread...
+2025-08-24 06:06:27,087 - ERROR - Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "/workspaces/DomainForge/bot.py", line 31, in on_ready
+    bot.tree.add_command(unban.unban_user)
+                         ^^^^^
+NameError: name 'unban' is not defined
+2025-08-24 06:07:12,346 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:07:12,347 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:07:12,347 - INFO - logging in using static token
+2025-08-24 06:07:14,364 - INFO - Shard ID None has connected to Gateway (Session ID: 2cc401601919a2f2839a194a3bfd3c12).
+2025-08-24 06:07:16,368 - INFO - Starting data saver thread...
+2025-08-24 06:07:30,446 - INFO - Data loaded from data.json
+2025-08-24 06:08:13,181 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 28, in create_subdomain
+    view = SubdomainCreationView(record_type=record_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: SubdomainCreationView.__init__() got an unexpected keyword argument 'record_type'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 873, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: TypeError: SubdomainCreationView.__init__() got an unexpected keyword argument 'record_type'
+2025-08-24 06:09:03,936 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:09:03,937 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:09:03,937 - INFO - logging in using static token
+2025-08-24 06:09:05,699 - INFO - Shard ID None has connected to Gateway (Session ID: 589a6c6bfd36ee1406ff2d698eab1f86).
+2025-08-24 06:09:07,774 - INFO - Starting data saver thread...
+2025-08-24 06:09:09,602 - INFO - Data loaded from data.json
+2025-08-24 06:09:45,747 - ERROR - Failed to create DNS record: [{'code': 9005, 'message': 'Content for A record must be a valid IPv4 address.'}]
+2025-08-24 06:10:25,771 - INFO - Successfully created DNS record for aman.lykcloud.com
+2025-08-24 06:10:46,187 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 34, in create_subdomain
+    await interaction.response.send_message(result)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1026, in send_message
+    raise InteractionResponded(self._parent)
+discord.errors.InteractionResponded: This interaction has already been responded to before
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: InteractionResponded: This interaction has already been responded to before
+2025-08-24 06:11:07,775 - INFO - Saving data...
+2025-08-24 06:11:27,390 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 34, in create_subdomain
+    await interaction.response.send_message(result)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1026, in send_message
+    raise InteractionResponded(self._parent)
+discord.errors.InteractionResponded: This interaction has already been responded to before
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: InteractionResponded: This interaction has already been responded to before
+2025-08-24 06:12:07,776 - INFO - Saving data...
+2025-08-24 06:13:07,776 - INFO - Saving data...
+2025-08-24 06:13:40,990 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:13:40,991 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:13:40,991 - INFO - logging in using static token
+2025-08-24 06:13:42,509 - INFO - Shard ID None has connected to Gateway (Session ID: 145445ab0bbc2bf301adb36eb7c2d8b5).
+2025-08-24 06:13:44,518 - INFO - Starting data saver thread...
+2025-08-24 06:13:55,438 - INFO - Data loaded from data.json
+2025-08-24 06:15:44,519 - INFO - Saving data...
+2025-08-24 06:16:44,520 - INFO - Saving data...
+2025-08-24 06:18:23,409 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:18:23,410 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:18:23,410 - INFO - logging in using static token
+2025-08-24 06:18:24,983 - INFO - Shard ID None has connected to Gateway (Session ID: b590eb05a8b0bc82c093bb38178f9256).
+2025-08-24 06:18:26,990 - INFO - Starting data saver thread...
+2025-08-24 06:18:28,733 - INFO - Data loaded from data.json
+2025-08-24 06:19:49,537 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 29, in create_subdomain
+    await interaction.response.send_message(result)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1026, in send_message
+    raise InteractionResponded(self._parent)
+discord.errors.InteractionResponded: This interaction has already been responded to before
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: InteractionResponded: This interaction has already been responded to before
+2025-08-24 06:23:26,086 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:23:26,088 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:23:26,088 - INFO - logging in using static token
+2025-08-24 06:23:27,642 - INFO - Shard ID None has connected to Gateway (Session ID: 83745f375ae534231ea1ce83fddd57c2).
+2025-08-24 06:23:29,730 - INFO - Starting data saver thread...
+2025-08-24 06:23:44,491 - INFO - Data loaded from data.json
+2025-08-24 06:25:10,527 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:25:10,528 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:25:10,528 - INFO - logging in using static token
+2025-08-24 06:25:12,160 - INFO - Shard ID None has connected to Gateway (Session ID: 124934b1e34f803a1509eaa779e231d3).
+2025-08-24 06:25:14,167 - INFO - Starting data saver thread...
+2025-08-24 06:25:17,615 - INFO - Data loaded from data.json
+2025-08-24 06:25:19,021 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 33, in create_subdomain
+    await interaction.response.send_message(embed=embed, view=view)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:25:29,732 - INFO - Saving data...
+2025-08-24 06:25:45,822 - INFO - Successfully created DNS record for mam.lykcloud.com
+2025-08-24 06:25:54,020 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 36, in create_subdomain
+    await interaction.response.send_message(result)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1026, in send_message
+    raise InteractionResponded(self._parent)
+discord.errors.InteractionResponded: This interaction has already been responded to before
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: InteractionResponded: This interaction has already been responded to before
+2025-08-24 06:26:29,732 - INFO - Saving data...
+2025-08-24 06:26:34,451 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:26:34,452 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:26:34,452 - INFO - logging in using static token
+2025-08-24 06:26:36,073 - INFO - Shard ID None has connected to Gateway (Session ID: 89d1313330d4c5ba5a64698647575c38).
+2025-08-24 06:26:38,088 - INFO - Starting data saver thread...
+2025-08-24 06:26:39,808 - INFO - Data loaded from data.json
+2025-08-24 06:26:40,171 - ERROR - Ignoring exception in command 'list_subdomains'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/list_subdomains.py", line 17, in list_subdomains
+    await interaction.response.send_message(embed=embed)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'list_subdomains' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:27:29,733 - INFO - Saving data...
+2025-08-24 06:27:39,420 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:27:39,421 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:27:39,421 - INFO - logging in using static token
+2025-08-24 06:27:41,079 - INFO - Shard ID None has connected to Gateway (Session ID: 68b8b65b18ec650ec23091fa18b076e5).
+2025-08-24 06:27:43,087 - INFO - Starting data saver thread...
+2025-08-24 06:27:50,430 - INFO - Data loaded from data.json
+2025-08-24 06:27:51,771 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 33, in create_subdomain
+    await interaction.response.send_message(embed=embed, view=view)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:28:13,579 - INFO - Successfully created DNS record for gg.lykcloud.com
+2025-08-24 06:28:22,507 - ERROR - Ignoring exception in command 'list_subdomains'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/list_subdomains.py", line 17, in list_subdomains
+    await interaction.response.send_message(embed=embed)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'list_subdomains' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:28:29,734 - INFO - Saving data...
+2025-08-24 06:29:29,734 - INFO - Saving data...
+2025-08-24 06:29:43,088 - INFO - Saving data...
+2025-08-24 06:30:11,862 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 36, in create_subdomain
+    await interaction.response.send_message(result)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1026, in send_message
+    raise InteractionResponded(self._parent)
+discord.errors.InteractionResponded: This interaction has already been responded to before
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: InteractionResponded: This interaction has already been responded to before
+2025-08-24 06:30:29,735 - INFO - Saving data...
+2025-08-24 06:30:56,076 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:30:56,077 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:30:56,077 - INFO - logging in using static token
+2025-08-24 06:30:57,727 - INFO - Shard ID None has connected to Gateway (Session ID: d600b672f09d97346135ca629bf8ca86).
+2025-08-24 06:30:59,743 - INFO - Starting data saver thread...
+2025-08-24 06:31:04,884 - INFO - Data loaded from data.json
+2025-08-24 06:31:05,308 - ERROR - Ignoring exception in command 'list_subdomains'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/list_subdomains.py", line 17, in list_subdomains
+    if not subdomains:
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'list_subdomains' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:31:29,736 - INFO - Saving data...
+2025-08-24 06:31:54,734 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 33, in create_subdomain
+    await interaction.response.send_message(embed=embed, view=view)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:32:10,975 - INFO - Successfully created DNS record for gggg.lykcloud.com
+2025-08-24 06:32:13,630 - ERROR - Ignoring exception in command 'list_subdomains'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/list_subdomains.py", line 17, in list_subdomains
+    if not subdomains:
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 226, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'list_subdomains' raised an exception: HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+2025-08-24 06:32:29,736 - INFO - Saving data...
+2025-08-24 06:33:29,737 - INFO - Saving data...
+2025-08-24 06:34:29,738 - INFO - Saving data...
+2025-08-24 06:35:29,739 - INFO - Saving data...
+2025-08-24 06:36:29,739 - INFO - Saving data...
+2025-08-24 06:37:29,742 - INFO - Saving data...
+2025-08-24 06:38:29,743 - INFO - Saving data...
+2025-08-24 06:39:29,744 - INFO - Saving data...
+2025-08-24 06:40:29,744 - INFO - Saving data...
+2025-08-24 06:41:29,745 - INFO - Saving data...
+2025-08-24 06:42:29,746 - INFO - Saving data...
+2025-08-24 06:43:16,026 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:43:16,027 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:43:16,027 - INFO - logging in using static token
+2025-08-24 06:43:17,686 - INFO - Shard ID None has connected to Gateway (Session ID: d57d49d46d56563cb3572cfa62a42a4c).
+2025-08-24 06:43:19,690 - INFO - Starting data saver thread...
+2025-08-24 06:43:29,747 - INFO - Saving data...
+2025-08-24 06:43:56,038 - INFO - Data loaded from data.json
+2025-08-24 06:43:57,514 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 33, in create_subdomain
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 226, in request
+    raise HTTPException(response, data)
+discord.errors.HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: HTTPException: 400 Bad Request (error code: 40060): Interaction has already been acknowledged.
+2025-08-24 06:44:28,647 - INFO - Successfully created DNS record for test.lykcloud.com
+2025-08-24 06:44:29,747 - INFO - Saving data...
+2025-08-24 06:44:38,351 - ERROR - Ignoring exception in command 'list_subdomains'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/list_subdomains.py", line 17, in list_subdomains
+    subdomains = data.get('users', {}).get(user_id, [])
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'list_subdomains' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:44:48,771 - INFO - Successfully deleted DNS record for test.lykcloud.com
+2025-08-24 06:44:51,063 - ERROR - No DNS record found for domain test.lykcloud.com
+2025-08-24 06:45:05,586 - ERROR - Ignoring exception in command 'admin_manage'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/admin_manage.py", line 104, in admin_manage
+    await interaction.response.send_message(embed=embed, view=view)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'admin_manage' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:45:29,748 - INFO - Saving data...
+2025-08-24 06:46:19,691 - INFO - Saving data...
+2025-08-24 06:46:29,749 - INFO - Saving data...
+2025-08-24 06:47:19,692 - INFO - Saving data...
+2025-08-24 06:47:29,749 - INFO - Saving data...
+2025-08-24 06:48:09,489 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:48:09,490 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:48:09,490 - INFO - logging in using static token
+2025-08-24 06:48:11,047 - INFO - Shard ID None has connected to Gateway (Session ID: 679e3d7b4d7767349ea8aca4e91f42d7).
+2025-08-24 06:48:13,055 - INFO - Starting data saver thread...
+2025-08-24 06:48:19,692 - INFO - Saving data...
+2025-08-24 06:48:29,750 - INFO - Saving data...
+2025-08-24 06:48:33,938 - INFO - Data loaded from data.json
+2025-08-24 06:48:35,242 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 38, in create_subdomain
+    await interaction.response.send_message(embed=embed, view=view)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:48:35,321 - ERROR - Ignoring exception in command 'create_subdomain'
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 859, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/DomainForge/commands/create_subdomain.py", line 38, in create_subdomain
+    await interaction.response.send_message(embed=embed, view=view)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/interactions.py", line 1054, in send_message
+    response = await adapter.create_interaction_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/webhook/async_.py", line 224, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/tree.py", line 1310, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 884, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.local/lib/python3.12/site-packages/discord/app_commands/commands.py", line 877, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'create_subdomain' raised an exception: NotFound: 404 Not Found (error code: 10062): Unknown interaction
+2025-08-24 06:49:18,039 - INFO - Saved data on exit
+2025-08-24 06:49:19,693 - INFO - Saving data...
+2025-08-24 06:49:22,043 - INFO - Saved data on exit
+2025-08-24 06:49:22,304 - INFO - Saved data on exit
+2025-08-24 06:49:22,431 - INFO - Saved data on exit
+2025-08-24 06:49:22,632 - INFO - Saved data on exit
+2025-08-24 06:49:26,126 - INFO - Saved data on exit
+2025-08-24 06:49:29,750 - INFO - Saving data...
+2025-08-24 06:49:35,961 - INFO - Saved data on exit
+2025-08-24 06:49:36,463 - INFO - Saved data on exit
+2025-08-24 06:49:36,492 - INFO - Saved data on exit
+2025-08-24 06:49:36,556 - INFO - Saved data on exit
+2025-08-24 06:49:36,601 - INFO - Saved data on exit
+2025-08-24 06:49:36,613 - INFO - Saved data on exit
+2025-08-24 06:49:36,664 - INFO - Saved data on exit
+2025-08-24 06:49:36,707 - INFO - Saved data on exit
+2025-08-24 06:49:36,747 - INFO - Saved data on exit
+2025-08-24 06:49:36,796 - INFO - Saved data on exit
+2025-08-24 06:49:36,802 - INFO - Saved data on exit
+2025-08-24 06:49:36,838 - INFO - Saved data on exit
+2025-08-24 06:49:36,897 - INFO - Saved data on exit
+2025-08-24 06:50:06,404 - WARNING - PyNaCl is not installed, voice will NOT be supported
+2025-08-24 06:50:06,405 - WARNING - Privileged message content intent is missing, commands may not work as expected.
+2025-08-24 06:50:06,405 - INFO - logging in using static token
+2025-08-24 06:50:07,942 - INFO - Shard ID None has connected to Gateway (Session ID: 7bb48b1994312d89474e735852e75dfc).
+2025-08-24 06:50:09,946 - INFO - Starting data saver thread...
+2025-08-24 06:50:11,808 - ERROR - Error loading data!
+Traceback (most recent call last):
+  File "/workspaces/DomainForge/utils/data_manager.py", line 23, in load_data
+    _data = json.load(f)
+            ^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-08-24 06:50:38,315 - ERROR - Failed to create DNS record: [{'code': 9003, 'message': 'Target 192.168.4.1 is not allowed for a proxied record.'}]
+2025-08-24 06:50:43,217 - ERROR - Error loading data!
+Traceback (most recent call last):
+  File "/workspaces/DomainForge/utils/data_manager.py", line 23, in load_data
+    _data = json.load(f)
+            ^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-08-24 06:51:06,972 - INFO - Successfully created DNS record for testtt.lykcloud.com
+2025-08-24 06:51:06,972 - ERROR - Error loading data!
+Traceback (most recent call last):
+  File "/workspaces/DomainForge/utils/data_manager.py", line 23, in load_data
+    _data = json.load(f)
+            ^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-08-24 06:51:16,445 - INFO - Data loaded from data.json
+2025-08-24 06:51:27,388 - ERROR - Failed to toggle proxy status for testtt.lykcloud.com: [{'code': 9004, 'message': 'This record type cannot be proxied.'}]
+2025-08-24 06:52:01,940 - INFO - Successfully deleted DNS record for testtt.lykcloud.com
+2025-08-24 06:53:09,947 - INFO - Saving data...
+2025-08-24 06:54:09,948 - INFO - Saving data...
+2025-08-24 06:55:09,949 - INFO - Saving data...
+2025-08-24 06:56:09,873 - INFO - Saved data on exit
+2025-08-24 06:56:12,737 - INFO - Saved data on exit
+2025-08-24 06:56:12,945 - INFO - Saved data on exit
+2025-08-24 06:56:13,106 - INFO - Saved data on exit

@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from utils.data_manager import load_data, is_admin
 
+@app_commands.command(name="userinfo", description="Show info about a user and their subdomains.")
 async def userinfo(interaction: discord.Interaction, user: discord.User):
     print(f"User ID attempting admin command: {interaction.user.id}")
     if not is_admin(interaction.user.id):

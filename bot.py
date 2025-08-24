@@ -6,8 +6,8 @@ import os
 from dotenv import load_dotenv
 from views.subdomain_creation import SubdomainCreationView
 from cloudflare import get_user_subdomains, delete_subdomain
-from commands import ban
-from commands import create_subdomain, list_subdomains, userinfo, ban_user, unban_user, whois, request_subdomain_role, manage_subdomain, admin_manage
+from commands import ban, unban
+from commands import create_subdomain, list_subdomains, userinfo, whois, request_subdomain_role, manage_subdomain, admin_manage
 
 # Load environment variables
 load_dotenv()

@@ -1,9 +1,11 @@
 {
-    "admins": [
-        1186473897240039444
-    ],
-    "users": {},
-    "banned_users": [
-        "1245715385228202006"
-    ]
+    "admins": [],
+    "users": {
+        "1186473897240039444": []
+    },
+    "banned_users": [],
+    "features": {
+        "request_subdomain_role": true
+    },
+    "hidden": {}
 }

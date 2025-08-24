@@ -1,3 +1,20 @@
+# Fetch available domains (zones) from Cloudflare
+async def get_available_domains():
+    async with aiohttp.ClientSession() as session:
+        headers = {
+            "Authorization": f"Bearer {API_TOKEN}",
+            "Content-Type": "application/json"
+        }
+        try:
+            async with session.get(f"{API_BASE_URL}/zones", headers=headers) as response:
+                result = await response.json()
+                if not result["success"]:
+                    logger.error(f"Failed to fetch available domains: {result['errors']}")
+                    return []
+                return [zone["name"] for zone in result["result"]]
+        except Exception as e:
+            logger.error(f"An error occurred while fetching available domains: {str(e)}")
+            return []
 import aiohttp
 import os
 import logging
@@ -16,13 +33,12 @@ logger.addHandler(handler)
 API_TOKEN = os.getenv("CLOUDFLARE_API_TOKEN")
 API_BASE_URL = "https://api.cloudflare.com/client/v4"
 
-async def create_subdomain(domain, record_type, record_content, proxy_status, additional_features):
+async def create_subdomain(domain, record_type, record_content, proxy_status, additional_features, user_id=None):
     async with aiohttp.ClientSession() as session:
         headers = {
             "Authorization": f"Bearer {API_TOKEN}",
             "Content-Type": "application/json"
         }
-        
         try:
             # Get the zone ID for the domain
             async with session.get(f"{API_BASE_URL}/zones?name={domain}", headers=headers) as response:
@@ -31,7 +47,7 @@ async def create_subdomain(domain, record_type, record_content, proxy_status, ad
                     logger.error(f"Failed to get zone ID for domain {domain}: {zones['errors']}")
                     return False, f"Failed to get zone ID for domain {domain}"
                 zone_id = zones["result"][0]["id"]
-            
+
             # Create the DNS record
             subdomain, content = record_content.split(",")
             data = {
@@ -40,11 +56,14 @@ async def create_subdomain(domain, record_type, record_content, proxy_status, ad
                 "content": content,
                 "proxied": proxy_status
             }
-            
+            # Add comment for audit
+            if user_id is not None:
+                data["comment"] = f"Created By - {user_id}"
+
             # Add additional features to the data
             for feature, value in additional_features.items():
                 data[feature] = value
-            
+
             async with session.post(f"{API_BASE_URL}/zones/{zone_id}/dns_records", headers=headers, json=data) as response:
                 result = await response.json()
                 if not result["success"]:

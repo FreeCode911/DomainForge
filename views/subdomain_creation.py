@@ -1,48 +1,59 @@
 import discord
-from discord.ui import Select, View, Button
-from config import DOMAINS, RECORD_TYPES, RECORD_FEATURES
+from discord.ui import Select, View, Button, Modal, TextInput
+from config import RECORD_TYPES, RECORD_FEATURES
 from cloudflare import create_subdomain
 import uuid
 import json
 import os
+from utils.data_manager import load_data, save_data
+from utils.embed_helpers import build_embed
+
 
 class SubdomainCreationView(View):
     def __init__(self):
-        super().__init__(timeout=60)  # 60 seconds timeout
+        super().__init__(timeout=120)
         self.domain = None
         self.record_type = None
         self.record_content = None
         self.proxy_status = None
         self.additional_features = {}
         self.uuid = str(uuid.uuid4())
-        self.add_item(Select(placeholder="Select a domain", 
-                             options=[discord.SelectOption(label=domain) for domain in DOMAINS],
-                             custom_id="domain_select"))
+
+    def populate_domain_select(self, domains: list[str]):
+        """Populate the view with a domain Select synchronously before sending the view."""
+        self.clear_items()
+        if not domains:
+            return False
+        options = [discord.SelectOption(label=d) for d in domains]
+        select = Select(placeholder="Select a domain", options=options, custom_id="domain_select")
+
+        async def _domain_callback(interaction: discord.Interaction):
+            await self.select_domain(interaction)
+
+        select.callback = _domain_callback
+        self.add_item(select)
+        return True
 
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
-        if interaction.data["custom_id"] == "domain_select":
-            await self.select_domain(interaction)
-        elif interaction.data["custom_id"] == "record_type_select":
-            await self.select_record_type(interaction)
-        elif interaction.data["custom_id"] == "proxy_status_select":
-            await self.select_proxy_status(interaction)
-        elif interaction.data["custom_id"] == "confirm":
-            await self.confirm(interaction)
-        elif interaction.data["custom_id"] == "cancel":
-            await self.cancel(interaction)
+        # Allow interactions; handlers below will manage state.
         return True
 
     async def on_timeout(self):
-        # Clear the view when it times out
         self.clear_items()
 
     async def select_domain(self, interaction: discord.Interaction):
         self.domain = interaction.data["values"][0]
         self.clear_items()
-        self.add_item(Select(placeholder="Select a record type", 
-                             options=[discord.SelectOption(label=record_type) for record_type in RECORD_TYPES],
-                             custom_id="record_type_select"))
-        embed = discord.Embed(title="Subdomain Creation", description=f"Selected domain: {self.domain}\nNow, choose a record type:", color=discord.Color.blue())
+        record_select = Select(placeholder="Select a record type",
+                               options=[discord.SelectOption(label=rt) for rt in RECORD_TYPES],
+                               custom_id="record_type_select")
+
+        async def _record_callback(i: discord.Interaction):
+            await self.select_record_type(i)
+
+        record_select.callback = _record_callback
+        self.add_item(record_select)
+        embed = build_embed(title="Subdomain Creation", description=f"Selected domain: {self.domain}\nNow, choose a record type:", color=discord.Color.blue(), user=interaction.user, fields=[("Domain", self.domain, False), ("Next", "Choose a record type below", False)])
         await interaction.response.edit_message(embed=embed, view=self)
 
     async def select_record_type(self, interaction: discord.Interaction):
@@ -57,98 +68,115 @@ class SubdomainCreationView(View):
         await self.finalize_subdomain(interaction)
 
     async def cancel(self, interaction: discord.Interaction):
-        embed = discord.Embed(title="Subdomain Creation", description="Subdomain creation cancelled.", color=discord.Color.red())
+        embed = build_embed(title="Cancelled", description="Subdomain creation cancelled.", color=discord.Color.red(), user=interaction.user)
         await interaction.response.edit_message(embed=embed, view=None)
 
     async def update_view(self, interaction: discord.Interaction):
-        embed = discord.Embed(title="Subdomain Creation", color=discord.Color.green())
-        embed.add_field(name="Domain", value=self.domain, inline=False)
-        embed.add_field(name="Record Type", value=self.record_type, inline=False)
-        embed.add_field(name="Record Content", value=self.record_content, inline=False)
-        embed.add_field(name="Proxy Status", value="Proxied" if self.proxy_status else "DNS only", inline=False)
+        fields = [
+            ("Domain", self.domain, False),
+            ("Record Type", self.record_type, True),
+            ("Record Content", self.record_content or "(not set)", True),
+            ("Proxy Status", "Proxied" if self.proxy_status else "DNS only", True),
+        ]
         for feature, value in self.additional_features.items():
-            embed.add_field(name=feature.capitalize(), value=value, inline=False)
-        embed.add_field(name="Confirmation", value="Please confirm or cancel the subdomain creation.", inline=False)
-        
+            fields.append((feature.capitalize(), value, False))
+        fields.append(("Confirmation", "Please confirm or cancel the subdomain creation.", False))
+
+        embed = build_embed(title="Confirm Subdomain", description="Review the details below and confirm.", color=discord.Color.green(), user=interaction.user, fields=fields)
+
         self.clear_items()
-        self.add_item(Button(label="Confirm", style=discord.ButtonStyle.green, custom_id="confirm"))
-        self.add_item(Button(label="Cancel", style=discord.ButtonStyle.red, custom_id="cancel"))
+        btn_confirm = Button(label="Confirm", style=discord.ButtonStyle.green, custom_id="confirm")
+        btn_cancel = Button(label="Cancel", style=discord.ButtonStyle.red, custom_id="cancel")
+
+        async def _confirm_cb(interaction: discord.Interaction):
+            await self.confirm(interaction)
+
+        async def _cancel_cb(interaction: discord.Interaction):
+            await self.cancel(interaction)
+
+        btn_confirm.callback = _confirm_cb
+        btn_cancel.callback = _cancel_cb
+        self.add_item(btn_confirm)
+        self.add_item(btn_cancel)
         await interaction.response.edit_message(embed=embed, view=self)
 
     async def finalize_subdomain(self, interaction: discord.Interaction):
         try:
-            success, message = await create_subdomain(self.domain, self.record_type, self.record_content, self.proxy_status, self.additional_features)
-            
+            user_id = str(interaction.user.id)
+            success, message = await create_subdomain(self.domain, self.record_type, self.record_content, self.proxy_status, self.additional_features, user_id=user_id)
             if success:
-                # Save user data
                 data = load_data()
-                user_id = str(interaction.user.id)
                 if user_id not in data['users']:
                     data['users'][user_id] = []
                 subdomain = f"{self.record_content.split(',')[0]}"
                 data['users'][user_id].append(subdomain)
                 save_data(data)
 
-                embed = discord.Embed(title="Subdomain Created", description=f"Subdomain created successfully!\n{message}", color=discord.Color.green())
+                embed = build_embed(title="Subdomain Created", description=f"Subdomain created successfully!\n{message}", color=discord.Color.green(), user=interaction.user, fields=[("Domain", subdomain, False), ("Record Type", self.record_type, True), ("Content", self.record_content.split(',')[1], True), ("Proxy", "Proxied" if self.proxy_status else "DNS only", True)])
                 await interaction.response.edit_message(embed=embed, view=None)
-                
-                # Send DM to user
-                dm_embed = discord.Embed(title="Subdomain Registration Successful", color=discord.Color.green())
-                dm_embed.add_field(name="Domain", value=subdomain, inline=False)
-                dm_embed.add_field(name="Record Type", value=self.record_type, inline=False)
-                dm_embed.add_field(name="Content", value=self.record_content.split(',')[1], inline=False)
-                dm_embed.add_field(name="Proxy Status", value="Proxied" if self.proxy_status else "DNS only", inline=False)
+
+                dm_fields = [
+                    ("Domain", subdomain, False),
+                    ("Record Type", self.record_type, True),
+                    ("Content", self.record_content.split(',')[1], True),
+                    ("Proxy Status", "Proxied" if self.proxy_status else "DNS only", True),
+                ]
                 for feature, value in self.additional_features.items():
-                    dm_embed.add_field(name=feature.capitalize(), value=value, inline=False)
+                    dm_fields.append((feature.capitalize(), value, False))
+
+                dm_embed = build_embed(title="Subdomain Registration Successful", color=discord.Color.green(), user=interaction.user, fields=dm_fields)
                 await interaction.user.send(embed=dm_embed)
             else:
-                embed = discord.Embed(title="Subdomain Creation Failed", description=f"Failed to create DNS record. Cloudflare returned the following error:\n```\n{message}\n```", color=discord.Color.red())
+                embed = build_embed(title="Creation Failed", description=f"Failed to create DNS record. Cloudflare returned the following error:\n```{message}```", color=discord.Color.red(), user=interaction.user)
                 await interaction.response.edit_message(embed=embed, view=None)
         except Exception as e:
-            embed = discord.Embed(title="Error", description=f"An unexpected error occurred: {str(e)}", color=discord.Color.red())
+            embed = build_embed(title="Error", description=f"An unexpected error occurred: {str(e)}", color=discord.Color.red(), user=interaction.user)
             await interaction.response.edit_message(embed=embed, view=None)
 
-class RecordContentModal(discord.ui.Modal, title="Enter Record Content"):
+
+class RecordContentModal(Modal, title="Enter Record Content"):
     def __init__(self, view: SubdomainCreationView):
         super().__init__()
         self.view = view
-        self.add_item(discord.ui.TextInput(label="Subdomain Name", custom_id="name"))
-        self.add_item(discord.ui.TextInput(label="Record Content", custom_id="content"))
-        
-        # Add additional fields based on record type
+        self.name = TextInput(label="Subdomain Name", custom_id="name")
+        self.content = TextInput(label="Record Content", custom_id="content")
+        self.add_item(self.name)
+        self.add_item(self.content)
+
         if self.view.record_type in RECORD_FEATURES:
             for feature in RECORD_FEATURES[self.view.record_type]:
-                self.add_item(discord.ui.TextInput(label=feature.capitalize(), custom_id=feature))
+                self.add_item(TextInput(label=feature.capitalize(), custom_id=feature))
 
     async def on_submit(self, interaction: discord.Interaction):
-        self.view.record_content = f"{self.children[0].value}.{self.view.domain},{self.children[1].value}"
-        
+        self.view.record_content = f"{self.name.value}.{self.view.domain},{self.content.value}"
+
         # Store additional features
         for child in self.children[2:]:
             self.view.additional_features[child.custom_id] = child.value
-        
+
         self.view.clear_items()
-        self.view.add_item(Select(placeholder="Proxy status", 
+        proxy_select = Select(placeholder="Proxy status",
                                   options=[discord.SelectOption(label="Proxied", value="True"),
                                            discord.SelectOption(label="DNS only", value="False")],
-                                  custom_id="proxy_status_select"))
-        
-        embed = discord.Embed(title="Subdomain Creation", color=discord.Color.blue())
-        embed.add_field(name="Domain", value=self.view.domain, inline=False)
-        embed.add_field(name="Record Type", value=self.view.record_type, inline=False)
-        embed.add_field(name="Record Content", value=self.view.record_content, inline=False)
+                                  custom_id="proxy_status_select")
+
+        async def _proxy_cb(interaction: discord.Interaction):
+            await self.view.select_proxy_status(interaction)
+
+        proxy_select.callback = _proxy_cb
+        self.view.add_item(proxy_select)
+
+        fields = [
+            ("Domain", self.view.domain, False),
+            ("Record Type", self.view.record_type, True),
+            ("Record Content", self.view.record_content, True),
+        ]
         for feature, value in self.view.additional_features.items():
-            embed.add_field(name=feature.capitalize(), value=value, inline=False)
-        embed.add_field(name="Next Step", value="Choose proxy status", inline=False)
-        
+            fields.append((feature.capitalize(), value, False))
+        fields.append(("Next Step", "Choose proxy status", False))
+
+        embed = build_embed(title="Subdomain Creation", color=discord.Color.blue(), user=interaction.user, fields=fields)
         await interaction.response.edit_message(embed=embed, view=self.view)
 
-def load_data():
-    if os.path.exists('data.json'):
-        with open('data.json', 'r') as f:
-            return json.load(f)
-    return {"admins": [], "users": {}}
 
-def save_data(data):
-    with open('data.json', 'w') as f:
-        json.dump(data, f, indent=4)
+# Use load_data/save_data from utils.data_manager to keep a single source of truth

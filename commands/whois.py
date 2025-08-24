@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from utils.data_manager import load_data, is_admin
 
+@app_commands.command(name="whois", description="Look up who owns a domain.")
 async def whois(interaction: discord.Interaction, domain: str):
     if not is_admin(interaction.user.id):
         embed = discord.Embed(title="Permission Denied", description="You don't have permission to use this command.", color=discord.Color.red())

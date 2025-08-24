@@ -3,6 +3,7 @@ from discord import app_commands
 from utils.data_manager import load_data, save_data, is_admin
 from cloudflare import delete_subdomain
 
+@app_commands.command(name="ban_user", description="Ban a user and delete all their subdomains.")
 async def ban_user(interaction: discord.Interaction, user: discord.User):
     if not is_admin(interaction.user.id):
         embed = discord.Embed(title="Permission Denied", description="You don't have permission to use this command.", color=discord.Color.red())

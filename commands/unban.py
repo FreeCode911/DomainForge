@@ -2,6 +2,7 @@ import discord
 from discord import app_commands
 from utils.data_manager import load_data, save_data, is_admin
 
+@app_commands.command(name="unban_user", description="Unban a user so they can use the bot again.")
 async def unban_user(interaction: discord.Interaction, user: discord.User):
     if not is_admin(interaction.user.id):
         embed = discord.Embed(title="Permission Denied", description="You don't have permission to use this command.", color=discord.Color.red())

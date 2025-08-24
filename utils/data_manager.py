@@ -2,6 +2,9 @@ import json
 import os
 import threading
 import time
+import atexit
+import signal
+import logging
 
 _data = None  # In-memory cache for data.json
 _data_lock = threading.Lock() # Lock for thread-safe data access
@@ -20,8 +23,15 @@ def load_data():
                         _data = json.load(f)
                         logging.info("Data loaded from data.json")
                 else:
-                    _data = {"admins": [], "users": {}, "banned_users": []}
+                    # Initialize default structure including feature toggles
+                    _data = {"admins": [], "users": {}, "banned_users": [], "features": {"request_subdomain_role": True}}
                     logging.info("data.json not found. Starting with blank slate.")
+                # Backwards-compat: ensure features key exists
+                if 'features' not in _data:
+                    _data['features'] = {"request_subdomain_role": True}
+                # Backwards-compat: ensure hidden key exists
+                if 'hidden' not in _data:
+                    _data['hidden'] = {}
                 _last_saved = time.time()
             except Exception as e:
                 logging.exception("Error loading data!")
@@ -63,3 +73,48 @@ def start_data_saver():
     thread = threading.Thread(target=save_data_periodically)
     thread.daemon = True  # Allow the main program to exit even if this thread is running
     thread.start()
+
+
+def _save_on_exit(*args):
+    try:
+        data = load_data()
+        save_data(data)
+        logging.info("Saved data on exit")
+    except Exception:
+        logging.exception("Failed to save data on exit")
+
+
+# Register save-on-exit handlers
+atexit.register(_save_on_exit)
+for sig in (signal.SIGINT, signal.SIGTERM):
+    try:
+        signal.signal(sig, lambda s, f: _save_on_exit())
+    except Exception:
+        # Some environments may restrict signal handling
+        pass
+
+
+def is_feature_enabled(key: str) -> bool:
+    data = load_data()
+    return bool(data.get('features', {}).get(key, False))
+
+
+def set_feature(key: str, enabled: bool):
+    data = load_data()
+    if 'features' not in data:
+        data['features'] = {}
+    data['features'][key] = bool(enabled)
+    save_data(data)
+
+
+def is_hidden(key: str) -> bool:
+    data = load_data()
+    return bool(data.get('hidden', {}).get(key, False))
+
+
+def set_hidden(key: str, hidden: bool):
+    data = load_data()
+    if 'hidden' not in data:
+        data['hidden'] = {}
+    data['hidden'][key] = bool(hidden)
+    save_data(data)
