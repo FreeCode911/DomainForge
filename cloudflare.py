@@ -99,3 +99,49 @@ async def delete_subdomain(domain):
         except Exception as e:
             logger.error(f"An error occurred while deleting subdomain: {str(e)}")
             return False
+
+async def toggle_proxy_status(domain):
+    async with aiohttp.ClientSession() as session:
+        headers = {
+            "Authorization": f"Bearer {API_TOKEN}",
+            "Content-Type": "application/json"
+        }
+
+        try:
+            # Get the zone ID for the domain
+            zone_name = '.'.join(domain.split('.')[-2:])
+            async with session.get(f"{API_BASE_URL}/zones?name={zone_name}", headers=headers) as response:
+                zones = await response.json()
+                if not zones["success"] or not zones["result"]:
+                    logger.error(f"No zones found for domain {zone_name}")
+                    return False, "No zones found for domain."
+                zone_id = zones["result"][0]["id"]
+
+            # Get the DNS record ID and current proxy status
+            async with session.get(f"{API_BASE_URL}/zones/{zone_id}/dns_records?name={domain}", headers=headers) as response:
+                records = await response.json()
+                if not records["success"] or not records["result"]:
+                    logger.error(f"No DNS record found for domain {domain}")
+                    return False, "No DNS record found for domain."
+                record_id = records["result"][0]["id"]
+                current_proxied = records["result"][0]["proxied"]
+
+            # Toggle the proxy status
+            new_proxied = not current_proxied
+
+            data = {
+                "proxied": new_proxied
+            }
+
+            async with session.patch(f"{API_BASE_URL}/zones/{zone_id}/dns_records/{record_id}", headers=headers, json=data) as response:
+                result = await response.json()
+                if not result["success"]:
+                    logger.error(f"Failed to toggle proxy status for {domain}: {result['errors']}")
+                    return False, f"Failed to toggle proxy status: {result['errors']}"
+
+                logger.info(f"Successfully toggled proxy status for {domain} to {new_proxied}")
+                return True, f"Proxy status toggled to { 'enabled' if new_proxied else 'disabled' }."
+
+        except Exception as e:
+            logger.error(f"An error occurred while toggling proxy status: {str(e)}")
+            return False, f"An error occurred: {str(e)}"
